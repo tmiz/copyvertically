@@ -1,4 +1,5 @@
-CopyVertically  -- a chrome extension for company workers --
+CopyVertically  
 ==============
 
 A chrome extension for copying column's values vertically from HTML table.
+
