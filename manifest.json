@@ -1,7 +1,7 @@
 {
   "name": "Copy Virtically on Table",
   "description": "Shows some of the features of the Context Menus API",
-  "version": "0.6",
+  "version": "0.1",
   "permissions": ["contextMenus","clipboardWrite","clipboardRead"],
   "background": {
     "scripts": ["ext/jquery-1.11.0.min.js", "background.js"]
