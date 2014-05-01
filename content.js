@@ -55,7 +55,7 @@
                 changeColorVertical(table, this.x);
                 strValue = copyColumnValues(table, this.x);
                 
-                chrome.runtime.sendMessage({method: "getLocalStorage", key: strValue}, function(response) {
+                chrome.runtime.sendMessage({method: "setLocalStorage", key: strValue}, function(response) {
                     console.log(response.data);
                 });
             }

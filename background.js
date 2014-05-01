@@ -35,7 +35,7 @@ var child2 = chrome.contextMenus.create({
 });
 
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
-    if (request.method == "getLocalStorage") {
+    if (request.method == "setLocalStorage") {
         localStorage['copyValue'] = request.key;
         sendResponse({});
     }
