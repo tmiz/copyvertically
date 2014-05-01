@@ -1,5 +1,5 @@
 {
-  "name": "Copy Vertically on Table",
+  "name": "Copy Vertically on HTML Table",
   "description": "Enables to store column's values from HTML table to your clipboard.",
   "version": "0.1",
   "permissions": ["contextMenus","clipboardWrite","clipboardRead"],
