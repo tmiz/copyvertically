@@ -16,6 +16,18 @@
         }, 0);
     }
 
+    function findParentTable(element) {
+        if (element.localName == "table") {
+            return element;
+        } else {
+            if (element.parentNode) {
+                return findParentTable(element.parentNode);
+            } else {
+                return null;
+            }
+        }
+    }
+
     function changeColorVertical(table, nk) {
         setAllCells(table, function (cell, k, i, nk) {
             if (k == nk) {
@@ -41,19 +53,10 @@
     function attachHighlighting(table) {
         setAllCells(table, function (cell, k, i, nk) {
             cell.onclick = function () {
-                var tables = document.getElementsByTagName("table");
-				var strValue = "";
-                for (var i = 0; i < tables.length; i++) {
-                    changeColorVertical(tables[i], -1);
-                    tables[i].selectedColumnNo = -1;
-                }
-
-                var table = this.parentElement.parentNode;
-                if (table.localName == "tbody" ) {
-                    table = table.parentNode;
-                }
+                var table = findParentTable(this);
+                setCellPosition(table);
                 changeColorVertical(table, this.x);
-                strValue = copyColumnValues(table, this.x);
+                var strValue = copyColumnValues(table, this.x);
                 
                 chrome.runtime.sendMessage({method: "setLocalStorage", key: strValue}, function(response) {
                     console.log(response.data);
@@ -79,12 +82,6 @@
         }
     }
 
-    // initialize
-    var tables = document.getElementsByTagName("table");
-    for (var i = 0; i < tables.length; i++) {
-        tables[i].selectedColumnNo = -1;
-        setCellPosition(tables[i]);
-    }
 
     // handle event
     chrome.runtime.onMessage.addListener(
