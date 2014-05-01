@@ -40,7 +40,7 @@
     chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         if (request.method == "setLocalStorage") {
             localStorage['copyValue'] = request.key;
-            sendResponse({});
+            sendResponse({data:"[CV:Debug] set value on local strage."});
         } else
             sendResponse({});
     });
